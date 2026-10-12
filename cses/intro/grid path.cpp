@@ -15,11 +15,7 @@ void sol(int now, int i, int j) {
         if (now == 49) cnt++;
         return;
     }
-    if (now == 49) return; 
-
-    if (!table[i-1][j] && !table[i+1][j] && table[i][j-1] && table[i][j+1]) return;
-    if (table[i-1][j] && table[i+1][j] && !table[i][j-1] && !table[i][j+1]) return;
-
+    if (now == 49) return;
     table[i][j] = 1;
     if (vs[now]) {
         sol(now+1,i+dx[a[now]],j+dy[a[now]]);
@@ -42,8 +38,6 @@ int main () {
             if (s[i-1] == 'D') a[i] = 4;
         }
     }
-    for (int k = 0; k <= 8; k++)
-        table[0][k] = table[8][k] = table[k][0] = table[k][8] = 1;
     sol(1,1,1);
     cout << cnt;
 }
